@@ -121,6 +121,13 @@ What if I never post this kind of images before? You can use common sense to jud
 						<!-- Footer for buttons-->
 							<footer id="footer">
 								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+									<button id='prev-btn' class='btn btn-lg btn-primary' disabled>Back</button>
+									<span id='counter'>
+									<span class='counter-top'></span> / <span class='counter-bottom'></span>
+									</span>
+									<button id='next-btn' class='btn btn-lg btn-primary' disabled>Next</button>
+								</div>
+								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
 								    <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
 								</div>
 							</footer>
@@ -150,7 +157,6 @@ What if I never post this kind of images before? You can use common sense to jud
   <input type='hidden' value='' name='output' id='output'/>
   <input type="hidden" id="hitId" name="hitId" value='MTURK_HIT_ID'>
   <input type="hidden" id="assignmentId" name="assignmentId" value='MTURK_ASSIGNMENT_ID'>
-  <input type="hidden" id="workerId" name="workerId" value='MTURK_WORKER_ID'>
   <!-- <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
     <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
   </div>
