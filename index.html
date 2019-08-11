@@ -22,9 +22,16 @@
 		<button class="collapsible">Instructions <i>(Best view in a full screen setting)</i> </button>
 			<div class="collapsible-content">
 			  <p>Place instructions here...(good example, bad example?)</p>
+			  <p>You will be given a product and asked whether a particular attribute (e.g., brand or color) is important when shopping for this or similar items.
+
+An attribute is considered important for a given product if it influences your purchasing decision. For example, you are willing to pay a little bit more for a particular brand of an electric toothbrush, then for you, brand is important for electric toothbrushes. In another example, suppose that you would only consider white shoes when buying running shoes. In this case, color is an important attribute for running shoes.
+
+If the product has no such attribute (e.g., car seats do not have flavor), choose "does not apply". If the product has the attribute but it does not affect your decision (e.g., you do not care the bar code value of car seats), choose "No".
+
+What if I never post this kind of images before? You can use common sense to judge attribute importance (i.e., whether other people who bought this product will think the attribute is important). If you have difficulty judging attribute importance for the product, you can answer “not sure”. Please also indicate your past shopping experience after the 3 questions about attributes.</p>
 			</div>
 
-		<div class="page-wrap" style="max-width:1680px;margin-left:auto;margin-right:auto;">
+		<div class="page-wrap" style="max-width:1680px;">
 			<!-- Main -->
 				<section id="main">
 					<!-- Task Descriptions -->
@@ -111,6 +118,12 @@
 									</div>
 								</div>
 						</section>
+						<!-- Footer for buttons-->
+							<footer id="footer">
+								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+								    <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
+								</div>
+							</footer>
 				</section>
 		</div>
 
@@ -138,10 +151,10 @@
   <input type="hidden" id="hitId" name="hitId" value='MTURK_HIT_ID'>
   <input type="hidden" id="assignmentId" name="assignmentId" value='MTURK_ASSIGNMENT_ID'>
   <input type="hidden" id="workerId" name="workerId" value='MTURK_WORKER_ID'>
-  <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+  <!-- <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
     <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
   </div>
-</form>
+ --></form>
 <script>
   var simpleamt = (function() {
 
@@ -255,6 +268,8 @@
           // Enable the UI if the HIT is not in preview mode.
           if (!simpleamt.isPreview()) {
             enable_hit();
+          } else {
+          	test();
           }
 
           // Set up the responses.
@@ -286,6 +301,28 @@
           });
           }
 
+        // Test the output
+        function test() {
+        	$('#submit-btn').prop('disabled', false);
+
+        	$('#submit-btn').click(function() {
+        		alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
+        		// clear responses
+	        	responses = [];
+	          	$('.selected').each(function(){
+	          	  $img = $(this).find('img');
+	              responses.push($img.attr('src'))
+	            })
+
+	            var output = {'target': query, 'responses': responses};
+	            console.log(output)
+
+	            if (output.responses.length < 1) {
+	              alert('No image selected. Correct before submitting.');
+	              return false;
+	            }
+            });
+        }
         // Enable the UI.
         function enable_hit() {
           enabled = true;
@@ -296,13 +333,13 @@
           // Set up submit handler.
           simpleamt.setupSubmit();
           $('#submit-btn').click(function() {
+          	responses = [];
           	$('.selected').each(function(){
           	  $img = $(this).find('img');
               responses.push($img.attr('src'))
-	        })
+	          })
 
             var output = {'target': query, 'responses': responses};
-            console.log(output)
 
             if (output.responses.length < 1) {
               alert('No image selected. Correct before submitting.');
