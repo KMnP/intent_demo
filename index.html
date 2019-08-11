@@ -296,6 +296,7 @@
 
         // Test the output
         function test() {
+        	$('#test-btn').prop('disabled', false);
         	$('#test-btn').click(function() {
 	          	$('.selected').each(function(){
 	          	  $img = $(this).find('img');
