@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Different Intent Images</title>
+		<title>Images with different motives</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
 		<script>
             STATIC_ROOT = "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static";
-            // STATIC_ROOT = "../static"
+            // STATIC_ROOT = "static"
             $('<link>').attr('rel','stylesheet')
               .attr('type','text/css')
               .attr('href',STATIC_ROOT + '/assets/css/main.css')
@@ -30,9 +30,10 @@
 					<!-- Task Descriptions -->
 						<section id="section">
 							<div class="inner">
-								<p style="font-size:140%;">Imagine the image below on the left is the one you really want to share in Instagram.<br />
-								But you cannot do it.<br />
-								Can you choose from the images on the right that convey <strong><font color="Tomato">different motive</font></strong>?
+								<p style="font-size:110%;">Imagine the image below on the left is the one you really want to share in Instagram.<br />
+								But you cannot do it (due to what?).<br />
+								Click on any images on the right that <strong><font color="Tomato">you can easily dismiss</font></strong>, leaving the ones that convey similar intent.
+								<!-- Can you choose from the images on the right that convey <strong><font color="Tomato">different motive</font></strong>? -->
 							</p>
 							</div>
 						</section>
@@ -41,7 +42,7 @@
 						<section id="selections">
 							<!-- put query image here -->
 								<div class="social column">
-									<h2>Image you want to post</h2>
+									<h3>Image you want to post</h3>
 									<span class="image fit special"><div id='query-container'></div></span>
 								</div>
 
@@ -297,18 +298,17 @@
           $('#submit-btn').click(function() {
           	$('.selected').each(function(){
           	  $img = $(this).find('img');
-              responses[idx].push($img.attr('src'))
+              responses.push($img.attr('src'))
 	        })
 
-            var output = {'target': input, 'responses': responses};
-            alert(output)
+            var output = {'target': query, 'responses': responses};
+            console.log(output)
 
             if (output.responses.length < 1) {
               alert('No image selected. Correct before submitting.');
               return false;
             }
-            var output = {'target': input, 'responses': responses};
-            alert(output)
+
             simpleamt.setOutput(output);
           });
         }
