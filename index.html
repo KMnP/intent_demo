@@ -111,6 +111,12 @@
 									</div>
 								</div>
 						</section>
+						<!-- Footer for buttons-->
+							<footer id="footer">
+								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+									<button id='test-btn' class='btn btn-lg btn-primary' disabled>test submit</button>
+								</div>
+							</footer>
 				</section>
 		</div>
 
@@ -255,6 +261,8 @@
           // Enable the UI if the HIT is not in preview mode.
           if (!simpleamt.isPreview()) {
             enable_hit();
+          } else {
+          	test();
           }
 
           // Set up the responses.
@@ -286,6 +294,22 @@
           });
           }
 
+        // Test the output
+        function test() {
+        	$('#test-btn').click(function() {
+	          	$('.selected').each(function(){
+	          	  $img = $(this).find('img');
+	              responses.push($img.attr('src'))
+	        })
+
+            var output = {'target': query, 'responses': responses};
+            console.log(output)
+
+            if (output.responses.length < 1) {
+              alert('No image selected. Correct before submitting.');
+              return false;
+            }
+        }
         // Enable the UI.
         function enable_hit() {
           enabled = true;
