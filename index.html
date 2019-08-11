@@ -114,7 +114,7 @@
 						<!-- Footer for buttons-->
 							<footer id="footer">
 								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
-									<button id='test-btn' class='btn btn-lg btn-primary' disabled>test submit</button>
+								    <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
 								</div>
 							</footer>
 				</section>
@@ -144,10 +144,10 @@
   <input type="hidden" id="hitId" name="hitId" value='MTURK_HIT_ID'>
   <input type="hidden" id="assignmentId" name="assignmentId" value='MTURK_ASSIGNMENT_ID'>
   <input type="hidden" id="workerId" name="workerId" value='MTURK_WORKER_ID'>
-  <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+  <!-- <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
     <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
   </div>
-</form>
+ --></form>
 <script>
   var simpleamt = (function() {
 
@@ -325,13 +325,13 @@
           // Set up submit handler.
           simpleamt.setupSubmit();
           $('#submit-btn').click(function() {
+          	responses = [];
           	$('.selected').each(function(){
           	  $img = $(this).find('img');
               responses.push($img.attr('src'))
 	          })
 
             var output = {'target': query, 'responses': responses};
-            console.log(output)
 
             if (output.responses.length < 1) {
               alert('No image selected. Correct before submitting.');
