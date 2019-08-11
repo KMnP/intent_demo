@@ -297,7 +297,10 @@
         // Test the output
         function test() {
         	$('#test-btn').prop('disabled', false);
+
         	$('#test-btn').click(function() {
+        		// clear responses
+	        	responses = [];
 	          	$('.selected').each(function(){
 	          	  $img = $(this).find('img');
 	              responses.push($img.attr('src'))
