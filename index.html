@@ -389,8 +389,8 @@ What if I never post this kind of images before? You can use common sense to jud
               return false;
             }
 
-            var output = $.map($.zip(query, responses), function(x) {
-              return {'target': x[0], 'responses': x[1]};
+            var output = query.map(function(q, i) {
+              return {'target': q, 'responses': responses[i]};
             });
             console.log(output)
           });
