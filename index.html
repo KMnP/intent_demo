@@ -223,34 +223,10 @@ What if I never post this kind of images before? You can use common sense to jud
     <script>
       $(function() {
         // Define some default input.
-        var STATIC_ROOT = "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static"
-        var DEFAULT_QUERY = 'https://images.unsplash.com/photo-1564956142890-3b3746211005?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80';
+        // var STATIC_ROOT = "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static"
+        var DEFAULT_QUERY = [];
 
-        var DEFAULT_INPUT = [
-             STATIC_ROOT + "/images/fulls/10.jpg",
-             STATIC_ROOT + "/images/fulls/01.jpg",
-             STATIC_ROOT + "/images/fulls/02.jpg",
-             STATIC_ROOT + "/images/fulls/03.jpg",
-            "https://images.unsplash.com/photo-1563498250890-28c63b64a217?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80",
-             STATIC_ROOT + "/images/fulls/05.jpg",
-             STATIC_ROOT + "/images/fulls/06.jpg",
-             STATIC_ROOT + "/images/fulls/07.jpg",
-             STATIC_ROOT + "/images/fulls/08.jpg",
-             STATIC_ROOT + "/images/fulls/09.jpg",
-            "https://images.unsplash.com/photo-1565190968244-b8ddbac25cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-             STATIC_ROOT + "/images/fulls/11.jpg",
-             STATIC_ROOT + "/images/fulls/12.jpg",
-             STATIC_ROOT + "/images/fulls/14.jpg",
-             STATIC_ROOT + "/images/fulls/13.jpg",
-            "https://images.unsplash.com/photo-1565187462252-defa6b3cfcfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-             STATIC_ROOT + "/images/fulls/15.jpg",
-             STATIC_ROOT + "/images/fulls/16.jpg",
-            'https://images.unsplash.com/photo-1565190503580-3fe10c3f12db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
-             STATIC_ROOT + "/images/fulls/17.jpg",
-             STATIC_ROOT + "/images/fulls/18.jpg",
-             STATIC_ROOT + "/images/fulls/19.jpg",
-             STATIC_ROOT + "/images/fulls/20.jpg",
-        ];
+        var DEFAULT_INPUT = [];
 
         var query = null;
         var input = null;
