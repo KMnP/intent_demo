@@ -374,10 +374,10 @@ What if I never post this kind of images before? You can use common sense to jud
           $('#submit-btn').click(function() {
             alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
         	// clear responses
-	        responses = [];
+	        responses[idx] = [];
           	$('.selected').each(function(){
           	  $img = $(this).find('img');
-              responses.push($img.attr('src'))
+              responses[idx].push($img.attr('src'))
             })
 
             var output = {'target': query, 'responses': responses};
@@ -401,10 +401,10 @@ What if I never post this kind of images before? You can use common sense to jud
           // Set up submit handler.
           simpleamt.setupSubmit();
           $('#submit-btn').click(function() {
-          	responses = [];
+          	responses[idx] = [];
           	$('.selected').each(function(){
           	  $img = $(this).find('img');
-              responses.push($img.attr('src'))
+              responses[idx].push($img.attr('src'))
 	          })
 
             var output = {'target': query, 'responses': responses};
