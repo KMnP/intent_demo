@@ -311,7 +311,7 @@ What if I never post this kind of images before? You can use common sense to jud
           if (enabled) {
             var prev_btn = $('#prev-btn');
             var next_btn = $('#next-btn');
-            var submit_btn = $('#submit_btn')
+            var submit_btn = $('#submit-btn')
             prev_btn.prop('disabled', true);
             next_btn.prop('disabled', true);
             submit_btn.prop('disabled', false)
@@ -366,7 +366,9 @@ What if I never post this kind of images before? You can use common sense to jud
           // Enable components
           $('#next-btn').click(function() { set_idx(idx + 1) });
           $('#prev-btn').click(function() { set_idx_back(idx - 1) });
-          $('#submit-btn').prop('disabled', false);
+          // if (idx == query.length - 1) {
+          //     submit_btn.prop('disabled', false);
+          //   }
 
           $('#submit-btn').click(function() {
             alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
