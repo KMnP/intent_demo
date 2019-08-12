@@ -335,12 +335,15 @@ What if I never post this kind of images before? You can use common sense to jud
           if (enabled) {
             var prev_btn = $('#prev-btn');
             var next_btn = $('#next-btn');
+            var submit_btn = $('#submit_btn')
             prev_btn.prop('disabled', true);
             next_btn.prop('disabled', true);
+            submit_btn.prop('disabled', true)
             if (idx > 0) {
               prev_btn.prop('disabled', false);
             }
-            if (idx < input.length - 1) next_btn.prop('disabled', false);
+            if (idx < query.length - 1) next_btn.prop('disabled', false);
+            if (idx === query.length) submit_btn.prop('disabled', false);
           }
 
         }
