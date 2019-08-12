@@ -343,7 +343,7 @@ What if I never post this kind of images before? You can use common sense to jud
               prev_btn.prop('disabled', false);
             }
             if (idx < query.length - 1) next_btn.prop('disabled', false);
-            if (idx === query.length) submit_btn.prop('disabled', false);
+            if (idx === query.length - 1) submit_btn.prop('disabled', false);
           }
 
         }
@@ -369,12 +369,26 @@ What if I never post this kind of images before? You can use common sense to jud
           render();
         }
 
+        function set_idx_back(new_idx) {
+          if (new_idx < 0 || new_idx >= input.length) return;
+
+          $('.selected').each(function(){
+            $img = $(this).find('img');
+            // add to the responses if not in array
+            if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
+              responses[idx].push($img.attr('src'))
+            }
+          })
+          idx = new_idx;
+          render();
+        }
+
         // Test the output
         function test() {
           enabled = true;
           // Enable components
           $('#next-btn').click(function() { set_idx(idx + 1) });
-          $('#prev-btn').click(function() { set_idx(idx - 1) });
+          $('#prev-btn').click(function() { set_idx_back(idx - 1) });
           $('#submit-btn').prop('disabled', false);
 
           $('#submit-btn').click(function() {
