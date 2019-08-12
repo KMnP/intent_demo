@@ -192,7 +192,8 @@ What if I never post this kind of images before? You can use common sense to jud
 
     function isPreview() {
       var assignment_id = getUrlParam('assignmentId');
-      if (assignment_id === null) return true;
+      // if (assignment_id === null) return true;
+      if (assignment_id === null) return false;
       return assignment_id == 'ASSIGNMENT_ID_NOT_AVAILABLE';
     }
 
@@ -244,9 +245,12 @@ What if I never post this kind of images before? You can use common sense to jud
           // Enable the UI if the HIT is not in preview mode.
           if (!simpleamt.isPreview()) {
             enable_hit();
-          } else {
-          	test();
           }
+          // if (!simpleamt.isPreview()) {
+          //   enable_hit();
+          // } else {
+          //   test();
+          // }
 
           // Set up the responses for each query.
           $.each(query, function (){
@@ -304,16 +308,13 @@ What if I never post this kind of images before? You can use common sense to jud
           if (enabled) {
             var prev_btn = $('#prev-btn');
             var next_btn = $('#next-btn');
-            var submit_btn = $('#submit-btn')
             prev_btn.prop('disabled', true);
             next_btn.prop('disabled', true);
-            submit_btn.prop('disabled', false)
             if (idx > 0) {
               prev_btn.prop('disabled', false);
             }
             if (idx < query.length - 1) {
               next_btn.prop('disabled', false);
-              submit_btn.prop('disabled', true);
             }
           }
         }
@@ -334,7 +335,6 @@ What if I never post this kind of images before? You can use common sense to jud
             alert('No image selected at this page. Correct before continue.');
             return false;
           }
-          
           idx = new_idx;
           render();
         }
@@ -390,9 +390,10 @@ What if I never post this kind of images before? You can use common sense to jud
           // Enable components
           $('#next-btn').click(function() { set_idx(idx + 1) });
           $('#prev-btn').click(function() { set_idx(idx - 1) });
-          if (idx == query.length - 1) {
-              $('#submit-btn').prop('disabled', false);
-          }
+          $('#submit-btn').prop('disabled', false);
+          // if (idx == query.length - 1) {
+          //     $('#submit-btn').prop('disabled', false);
+          // }
 
           // Set up submit handler.
           simpleamt.setupSubmit();
