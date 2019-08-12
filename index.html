@@ -356,8 +356,12 @@ What if I never post this kind of images before? You can use common sense to jud
           	if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
               responses[idx].push($img.attr('src'))
             }
-	      })
-	      console.log(responses)
+	        })
+	        console.log(responses)
+          if (responses[idx].length < 1) {
+            alert('No image selected. Correct before continue.');
+            return false;
+          }
           
           idx = new_idx;
           render();
@@ -373,20 +377,27 @@ What if I never post this kind of images before? You can use common sense to jud
 
           $('#submit-btn').click(function() {
             alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
-        	// clear responses
-	        responses[idx] = [];
+          	// clear responses
+  	        responses[idx] = [];
           	$('.selected').each(function(){
           	  $img = $(this).find('img');
               responses[idx].push($img.attr('src'))
             })
 
-            var output = {'target': query, 'responses': responses};
-            console.log(output)
+            // if (_.any(responses, function(d) { return d.length < 1; })) {
+            //   alert('No image selected. Correct before continue.. Correct before submitting.');
+            //   return false;
+            // }
 
-            if (output.responses.length < 1) {
+            if (responses[idx].length < 1) {
               alert('No image selected. Correct before submitting.');
               return false;
             }
+
+            var output = _.map(_.zip(query, responses), function(x) {
+              return {'target': x[0], 'responses': x[1]};
+            });
+            console.log(output)
           });
         }
         // Enable the UI.
@@ -407,13 +418,13 @@ What if I never post this kind of images before? You can use common sense to jud
               responses[idx].push($img.attr('src'))
 	          })
 
-            var output = {'target': query, 'responses': responses};
-
-            if (output.responses.length < 1) {
-              alert('No image selected. Correct before submitting.');
+            if (responses[idx].length < 1) {
+              alert('No image selected. Correct before continue.');
               return false;
             }
-
+            var output = _.map(_.zip(query, responses), function(x) {
+              return {'target': x[0], 'responses': x[1]};
+            });
             simpleamt.setOutput(output);
           });
         }
