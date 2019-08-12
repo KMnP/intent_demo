@@ -338,7 +338,7 @@ What if I never post this kind of images before? You can use common sense to jud
 	        })
 	        // console.log(responses)
           if (responses[idx].length < 1) {
-            alert('No image selected. Correct before continue.');
+            alert('No image selected at this page. Correct before continue.');
             return false;
           }
           
@@ -385,11 +385,11 @@ What if I never post this kind of images before? You can use common sense to jud
             // }
 
             if (responses[idx].length < 1) {
-              alert('No image selected. Correct before submitting.');
+              alert('No image selected at this page. Correct before submitting.');
               return false;
             }
 
-            var output = _.map(_.zip(query, responses), function(x) {
+            var output = $.map($.zip(query, responses), function(x) {
               return {'target': x[0], 'responses': x[1]};
             });
             console.log(output)
