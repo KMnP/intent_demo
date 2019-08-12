@@ -243,14 +243,14 @@ What if I never post this kind of images before? You can use common sense to jud
           input = simpleamt.getInput(DEFAULT_INPUT);
 
           // Enable the UI if the HIT is not in preview mode.
-          if (!simpleamt.isPreview()) {
-            enable_hit();
-          }
           // if (!simpleamt.isPreview()) {
           //   enable_hit();
-          // } else {
-          //   test();
           // }
+          if (!simpleamt.isPreview()) {
+            enable_hit();
+          } else {
+            test();
+          }
 
           // Set up the responses for each query.
           $.each(query, function (){
