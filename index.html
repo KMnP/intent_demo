@@ -279,14 +279,14 @@ What if I never post this kind of images before? You can use common sense to jud
           	test();
           }
 
-          // Set up the responses.
-          $.each(input, function (){
+          // Set up the responses for each query.
+          $.each(query, function (){
             responses.push([]);
           });
 
           // Preload all images
           // var imgs = [];
-          // _.each(input, function(img_url) {
+          // $.each(query, function(img_url) {
           //   var img = new Image();
           //   img.onload = function() { console.log('loaded image from ' + img_url); };
           //   img.src = img_url;
