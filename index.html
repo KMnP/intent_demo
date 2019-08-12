@@ -55,7 +55,7 @@ What if I never post this kind of images before? You can use common sense to jud
 
 							<!-- Grid -->
 								<div class="column">
-									<h3>Please <font color="RED">click on the images to select</font>, double-click to remove selection.</h3>
+									<h3>Please <font color="RED">click on the images to select</font>, double-click to remove selection. Scroll down to see more images</h3>
 									<div class="gallery">
 										<div class="content">
 											<!-- row 1 -->
@@ -379,11 +379,6 @@ What if I never post this kind of images before? You can use common sense to jud
               responses[idx].push($img.attr('src'))
             })
 
-            // if (_.any(responses, function(d) { return d.length < 1; })) {
-            //   alert('No image selected. Correct before continue.. Correct before submitting.');
-            //   return false;
-            // }
-
             if (responses[idx].length < 1) {
               alert('No image selected at this page. Correct before submitting.');
               return false;
@@ -402,23 +397,25 @@ What if I never post this kind of images before? You can use common sense to jud
           // Enable components
           $('#next-btn').click(function() { set_idx(idx + 1) });
           $('#prev-btn').click(function() { set_idx(idx - 1) });
-          // $('#submit-btn').prop('disabled', false);
 
           // Set up submit handler.
           simpleamt.setupSubmit();
           $('#submit-btn').click(function() {
-          	responses[idx] = [];
-          	$('.selected').each(function(){
-          	  $img = $(this).find('img');
+          	// clear responses
+            responses[idx] = [];
+            $('.selected').each(function(){
+              $img = $(this).find('img');
               responses[idx].push($img.attr('src'))
-	          })
+            })
 
             if (responses[idx].length < 1) {
-              alert('No image selected. Correct before continue.');
+              alert('No image selected at this page. Correct before submitting.');
               return false;
             }
-            var output = _.map(_.zip(query, responses), function(x) {
-              return {'target': x[0], 'responses': x[1]};
+
+            // prepare output
+            var output = query.map(function(q, i) {
+              return {'target': q, 'responses': responses[i]};
             });
             simpleamt.setOutput(output);
           });
