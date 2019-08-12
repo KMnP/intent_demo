@@ -314,14 +314,14 @@ What if I never post this kind of images before? You can use common sense to jud
             var submit_btn = $('#submit_btn')
             prev_btn.prop('disabled', true);
             next_btn.prop('disabled', true);
-            submit_btn.prop('disabled', true)
+            submit_btn.prop('disabled', false)
             if (idx > 0) {
               prev_btn.prop('disabled', false);
             }
-            if (idx < query.length - 1) next_btn.prop('disabled', false);
-            if !(idx < query.length - 1) submit_btn.prop('disabled', false);
-          }
-
+            if (idx < query.length - 1) {
+              next_btn.prop('disabled', false);
+              submit_btn.prop('disabled', true);
+            }
         }
 
         // Update the index, and save the clicked responses from gallery.
