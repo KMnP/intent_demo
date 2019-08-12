@@ -55,7 +55,7 @@ What if I never post this kind of images before? You can use common sense to jud
 
 							<!-- Grid -->
 								<div class="column">
-									<h3>Please <font color="RED">click on the images to select</font>, double-click to remove selection. Scroll down to see more images</h3>
+									<h3>Please <font color="RED">click on the images to select</font>, double-click to remove selection. Scroll down to see more images.</h3>
 									<div class="gallery">
 										<div class="content">
 											<!-- row 1 -->
@@ -127,9 +127,6 @@ What if I never post this kind of images before? You can use common sense to jud
 									</span>
 									<button id='next-btn' class='btn btn-lg btn-primary' disabled>Next</button>
 								</div>
-								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
-								    <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
-								</div>
 							</footer>
 				</section>
 		</div>
@@ -155,12 +152,11 @@ What if I never post this kind of images before? You can use common sense to jud
 
 <form id='results-form' method='post' action='dummy' class='text-center'>
   <input type='hidden' value='' name='output' id='output'/>
-  <input type="hidden" id="hitId" name="hitId" value='MTURK_HIT_ID'>
   <input type="hidden" id="assignmentId" name="assignmentId" value='MTURK_ASSIGNMENT_ID'>
-  <!-- <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+  <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
     <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
   </div>
- --></form>
+</form>
 <script>
   var simpleamt = (function() {
 
@@ -175,7 +171,6 @@ What if I never post this kind of images before? You can use common sense to jud
       try {
         return JSON.parse($('#query').html());
       } catch (e) {
-        console.log(e)
         console.log($('#query').html())
         return default_query;
       }
@@ -186,7 +181,6 @@ What if I never post this kind of images before? You can use common sense to jud
       try {
         return JSON.parse($('#input').html());
       } catch (e) {
-        console.log(e)
         console.log($('#input').html())
         return default_input;
       }
@@ -206,7 +200,6 @@ What if I never post this kind of images before? You can use common sense to jud
       var submit_to = getUrlParam('turkSubmitTo');
       $('#results-form').attr('action', submit_to + '/mturk/externalSubmit');
       $('#assignmentId').val(getUrlParam('assignmentId'));
-      $('#worker_id').val(getUrlParam('workerId'));
     }
 
     return {
@@ -366,9 +359,9 @@ What if I never post this kind of images before? You can use common sense to jud
           // Enable components
           $('#next-btn').click(function() { set_idx(idx + 1) });
           $('#prev-btn').click(function() { set_idx_back(idx - 1) });
-          // if (idx == query.length - 1) {
-          //     submit_btn.prop('disabled', false);
-          //   }
+          if (idx == query.length - 1) {
+              $('#submit-btn').prop('disabled', false);
+          }
 
           $('#submit-btn').click(function() {
             alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
@@ -397,6 +390,9 @@ What if I never post this kind of images before? You can use common sense to jud
           // Enable components
           $('#next-btn').click(function() { set_idx(idx + 1) });
           $('#prev-btn').click(function() { set_idx(idx - 1) });
+          if (idx == query.length - 1) {
+              $('#submit-btn').prop('disabled', false);
+          }
 
           // Set up submit handler.
           simpleamt.setupSubmit();
@@ -409,15 +405,16 @@ What if I never post this kind of images before? You can use common sense to jud
             })
 
             if (responses[idx].length < 1) {
+              // Validate the output
               alert('No image selected at this page. Correct before submitting.');
               return false;
+            } else {
+              // prepare output
+              var output = query.map(function(q, i) {
+                return {'target': q, 'responses': responses[i]};
+              });
+              simpleamt.setOutput(output);
             }
-
-            // prepare output
-            var output = query.map(function(q, i) {
-              return {'target': q, 'responses': responses[i]};
-            });
-            simpleamt.setOutput(output);
           });
         }
 
