@@ -305,7 +305,6 @@ What if I never post this kind of images before? You can use common sense to jud
 
           // Set up the grid
           $('.image-container').each(function(index){
-          	console.log(index);
           	$(this).empty();
             $('<img>').attr({'src': input[idx][index]}).appendTo($(this));
             console.log('loaded image from ' + input[idx][index]);
