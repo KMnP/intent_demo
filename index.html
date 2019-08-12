@@ -192,8 +192,8 @@ What if I never post this kind of images before? You can use common sense to jud
 
     function isPreview() {
       var assignment_id = getUrlParam('assignmentId');
-      // if (assignment_id === null) return true;
-      if (assignment_id === null) return false;
+      if (assignment_id === null) return true;
+      // if (assignment_id === null) return false;
       return assignment_id == 'ASSIGNMENT_ID_NOT_AVAILABLE';
     }
 
@@ -308,13 +308,16 @@ What if I never post this kind of images before? You can use common sense to jud
           if (enabled) {
             var prev_btn = $('#prev-btn');
             var next_btn = $('#next-btn');
+            var submit_btn = $('#submit-btn');
             prev_btn.prop('disabled', true);
             next_btn.prop('disabled', true);
+            submit_btn.prop('disabled', false);
             if (idx > 0) {
               prev_btn.prop('disabled', false);
             }
             if (idx < query.length - 1) {
               next_btn.prop('disabled', false);
+              submit_btn.prop('disabled', true);
             }
           }
         }
@@ -391,9 +394,9 @@ What if I never post this kind of images before? You can use common sense to jud
           $('#next-btn').click(function() { set_idx(idx + 1) });
           $('#prev-btn').click(function() { set_idx(idx - 1) });
           $('#submit-btn').prop('disabled', false);
-          // if (idx == query.length - 1) {
-          //     $('#submit-btn').prop('disabled', false);
-          // }
+          if (idx == query.length - 1) {
+              $('#submit-btn').prop('disabled', false);
+          }
 
           // Set up submit handler.
           simpleamt.setupSubmit();
