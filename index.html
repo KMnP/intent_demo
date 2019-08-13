@@ -22,6 +22,13 @@
 		<button class="collapsible">Instructions <i>(Best view in a full screen setting)</i> </button>
 			<div class="collapsible-content">
 			  <p>Place instructions here...(good example, bad example?)</p>
+			  <p>You will be given a product and asked whether a particular attribute (e.g., brand or color) is important when shopping for this or similar items.
+
+An attribute is considered important for a given product if it influences your purchasing decision. For example, you are willing to pay a little bit more for a particular brand of an electric toothbrush, then for you, brand is important for electric toothbrushes. In another example, suppose that you would only consider white shoes when buying running shoes. In this case, color is an important attribute for running shoes.
+
+If the product has no such attribute (e.g., car seats do not have flavor), choose "does not apply". If the product has the attribute but it does not affect your decision (e.g., you do not care the bar code value of car seats), choose "No".
+
+What if I never post this kind of images before? You can use common sense to judge attribute importance (i.e., whether other people who bought this product will think the attribute is important). If you have difficulty judging attribute importance for the product, you can answer “not sure”. Please also indicate your past shopping experience after the 3 questions about attributes.</p>
 			</div>
 
 		<div class="page-wrap" style="max-width:1680px;">
@@ -32,7 +39,7 @@
 							<div class="inner">
 								<p style="font-size:110%;">Imagine the image below on the left is the one you really want to share in Instagram.<br />
 								But you cannot do it (due to what?).<br />
-								Click on any images on the right that <strong><font color="Tomato">you can easily dismiss</font></strong>, leaving the ones that convey similar intent.
+								Click on any images on the right that <strong><font color="RED">you can easily dismiss</font></strong>, leaving the ones that convey similar intent.
 								<!-- Can you choose from the images on the right that convey <strong><font color="Tomato">different motive</font></strong>? -->
 							</p>
 							</div>
@@ -48,7 +55,7 @@
 
 							<!-- Grid -->
 								<div class="column">
-									<h3>Please <font color="Tomato">click on the images to select</font>, double-click to remove selection.</h3>
+									<h3>Please <font color="RED">click on the images to select</font>, double-click to remove selection. Scroll down to see more images.</h3>
 									<div class="gallery">
 										<div class="content">
 											<!-- row 1 -->
@@ -114,7 +121,11 @@
 						<!-- Footer for buttons-->
 							<footer id="footer">
 								<div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
-								    <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
+									<button id='prev-btn' class='btn btn-lg btn-primary' disabled>Back</button>
+									<span id='counter'>
+									<span class='counter-top'></span> / <span class='counter-bottom'></span>
+									</span>
+									<button id='next-btn' class='btn btn-lg btn-primary' disabled>Next</button>
 								</div>
 							</footer>
 				</section>
@@ -133,21 +144,19 @@
 		  $.getScript(STATIC_ROOT + '/assets/js/collapsible.js');
 		</script>
     <script type='text/json' id='input'>
-  ["https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/33.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/34.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/35.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/36.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/37.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/38.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/39.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/40.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/41.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/42.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/43.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/44.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/45.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/46.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/47.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/48.jpg"]
+  [["https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/01.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/02.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/03.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/04.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/05.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/06.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/07.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/08.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/09.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/10.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/11.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/12.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/16.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/15.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/13.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/14.jpg"], ["https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/20.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/23.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/24.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/32.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/19.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/27.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/21.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/17.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/28.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/25.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/18.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/26.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/29.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/31.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/30.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/22.jpg"], ["https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/36.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/43.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/45.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/38.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/46.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/47.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/48.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/40.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/34.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/33.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/37.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/39.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/41.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/42.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/44.jpg", "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static/images/fulls/35.jpg"]]
 </script>
 <script type='text/json' id='query'>
-  "https://images.unsplash.com/photo-1565363887211-f84e8598833a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"
+  ["https://images.unsplash.com/photo-1565363887211-f84e8598833a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80", "https://images.unsplash.com/photo-1565363887211-f84e8598833a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80", "https://images.unsplash.com/photo-1565363887211-f84e8598833a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"]
 </script>
 
 <form id='results-form' method='post' action='dummy' class='text-center'>
   <input type='hidden' value='' name='output' id='output'/>
-  <input type="hidden" id="hitId" name="hitId" value='MTURK_HIT_ID'>
   <input type="hidden" id="assignmentId" name="assignmentId" value='MTURK_ASSIGNMENT_ID'>
-  <input type="hidden" id="workerId" name="workerId" value='MTURK_WORKER_ID'>
-  <!-- <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
+  <div class='col-xs-4 col-xs-offset-4 text-center' id='button-div'>
     <input type='submit' class='btn btn-lg btn-success' id='submit-btn' value='Submit' disabled/>
   </div>
- --></form>
+</form>
 <script>
   var simpleamt = (function() {
 
@@ -162,7 +171,6 @@
       try {
         return JSON.parse($('#query').html());
       } catch (e) {
-        console.log(e)
         console.log($('#query').html())
         return default_query;
       }
@@ -173,7 +181,6 @@
       try {
         return JSON.parse($('#input').html());
       } catch (e) {
-        console.log(e)
         console.log($('#input').html())
         return default_input;
       }
@@ -186,6 +193,7 @@
     function isPreview() {
       var assignment_id = getUrlParam('assignmentId');
       if (assignment_id === null) return true;
+      // if (assignment_id === null) return false;
       return assignment_id == 'ASSIGNMENT_ID_NOT_AVAILABLE';
     }
 
@@ -193,7 +201,6 @@
       var submit_to = getUrlParam('turkSubmitTo');
       $('#results-form').attr('action', submit_to + '/mturk/externalSubmit');
       $('#assignmentId').val(getUrlParam('assignmentId'));
-      $('#worker_id').val(getUrlParam('workerId'));
     }
 
     return {
@@ -210,34 +217,10 @@
     <script>
       $(function() {
         // Define some default input.
-        var STATIC_ROOT = "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static"
-        var DEFAULT_QUERY = 'https://images.unsplash.com/photo-1564956142890-3b3746211005?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80';
+        // var STATIC_ROOT = "https://intentology.s3.us-east-2.amazonaws.com/intent_annotation/static"
+        var DEFAULT_QUERY = [];
 
-        var DEFAULT_INPUT = [
-             STATIC_ROOT + "/images/fulls/10.jpg",
-             STATIC_ROOT + "/images/fulls/01.jpg",
-             STATIC_ROOT + "/images/fulls/02.jpg",
-             STATIC_ROOT + "/images/fulls/03.jpg",
-            "https://images.unsplash.com/photo-1563498250890-28c63b64a217?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80",
-             STATIC_ROOT + "/images/fulls/05.jpg",
-             STATIC_ROOT + "/images/fulls/06.jpg",
-             STATIC_ROOT + "/images/fulls/07.jpg",
-             STATIC_ROOT + "/images/fulls/08.jpg",
-             STATIC_ROOT + "/images/fulls/09.jpg",
-            "https://images.unsplash.com/photo-1565190968244-b8ddbac25cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-             STATIC_ROOT + "/images/fulls/11.jpg",
-             STATIC_ROOT + "/images/fulls/12.jpg",
-             STATIC_ROOT + "/images/fulls/14.jpg",
-             STATIC_ROOT + "/images/fulls/13.jpg",
-            "https://images.unsplash.com/photo-1565187462252-defa6b3cfcfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80",
-             STATIC_ROOT + "/images/fulls/15.jpg",
-             STATIC_ROOT + "/images/fulls/16.jpg",
-            'https://images.unsplash.com/photo-1565190503580-3fe10c3f12db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
-             STATIC_ROOT + "/images/fulls/17.jpg",
-             STATIC_ROOT + "/images/fulls/18.jpg",
-             STATIC_ROOT + "/images/fulls/19.jpg",
-             STATIC_ROOT + "/images/fulls/20.jpg",
-        ];
+        var DEFAULT_INPUT = [];
 
         var query = null;
         var input = null;
@@ -246,6 +229,7 @@
         var responses = [];
 
         // Some variables to track state of the HIT.
+        var idx = 0;
         var enabled = false;
 
         // Output
@@ -259,18 +243,23 @@
           input = simpleamt.getInput(DEFAULT_INPUT);
 
           // Enable the UI if the HIT is not in preview mode.
+          // if (!simpleamt.isPreview()) {
+          //   enable_hit();
+          // }
           if (!simpleamt.isPreview()) {
             enable_hit();
           } else {
-          	test();
+            test();
           }
 
-          // Set up the responses.
-          // _.each(input, function() { responses.push(''); });
+          // Set up the responses for each query.
+          $.each(query, function (){
+            responses.push([]);
+          });
 
           // Preload all images
           // var imgs = [];
-          // _.each(input, function(img_url) {
+          // $.each(query, function(img_url) {
           //   var img = new Image();
           //   img.onload = function() { console.log('loaded image from ' + img_url); };
           //   img.src = img_url;
@@ -281,65 +270,158 @@
 
         // Use the current index to update the image and description
         function render() {
+          // scroll up to the top
+          document.body.scrollTop = 0;
+		  document.documentElement.scrollTop = 0;
+          console.log(idx)
           // Set up the image
           $('#query-container').empty();
-          $('<img>').attr({'src': query}).appendTo($('#query-container'));
+          $('<img>').attr({'src': query[idx]}).appendTo($('#query-container'));
           console.log('loaded proxy image from ' + query);
 
+          // Set up the grid
           $('.image-container').each(function(index){
-          	console.log(index);
           	$(this).empty();
-            $('<img>').attr({'src': input[index]}).appendTo($(this));
-            console.log('loaded image from ' + input[index]);
+            $('<img>').attr({'src': input[idx][index]}).appendTo($(this));
+            console.log('loaded image from ' + input[idx][index]);
           });
+
+
+          // Refresh the counter
+          $('.counter-top').text(idx + 1);
+          $('.counter-bottom').text(input.length);
+
+          // Set the media according to responses
+          $(".media").filter(".selected").removeClass('selected');
+          if (responses[idx].length !== 0) {
+          	// set up the grid according to previous selection
+          	$('.media').each(function(){
+          	  $img = $(this).find('img');
+          	  // if this image is in the responses
+          	  if(jQuery.inArray($img.attr('src'), responses[idx]) !== -1) {
+                $(this).addClass('selected');
+          	  }
+	        })
+          } else {
+          	responses[idx] = [];
           }
+
+          // If the UI is enabled, enable or disable the buttons
+          // depending on the index.
+          if (enabled) {
+            var prev_btn = $('#prev-btn');
+            var next_btn = $('#next-btn');
+            var submit_btn = $('#submit-btn');
+            prev_btn.prop('disabled', true);
+            next_btn.prop('disabled', true);
+            submit_btn.prop('disabled', false);
+            if (idx > 0) {
+              prev_btn.prop('disabled', false);
+            }
+            if (idx < query.length - 1) {
+              next_btn.prop('disabled', false);
+              submit_btn.prop('disabled', true);
+            }
+          }
+        }
+
+        // Update the index, and save the clicked responses from gallery.
+        function set_idx(new_idx) {
+          if (new_idx < 0 || new_idx >= input.length) return;
+
+          $('.selected').each(function(){
+          	$img = $(this).find('img');
+          	// add to the responses if not in array
+          	if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
+              responses[idx].push($img.attr('src'))
+            }
+	        })
+	        // console.log(responses)
+          if (responses[idx].length < 1) {
+            alert('No image selected at this page. Correct before continue.');
+            return false;
+          }
+          idx = new_idx;
+          render();
+        }
+
+        function set_idx_back(new_idx) {
+          if (new_idx < 0 || new_idx >= input.length) return;
+
+          $('.selected').each(function(){
+            $img = $(this).find('img');
+            // add to the responses if not in array
+            if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
+              responses[idx].push($img.attr('src'))
+            }
+          })
+          idx = new_idx;
+          render();
+        }
 
         // Test the output
         function test() {
-        	$('#submit-btn').prop('disabled', false);
+          enabled = true;
+          // Enable components
+          $('#next-btn').click(function() { set_idx(idx + 1) });
+          $('#prev-btn').click(function() { set_idx_back(idx - 1) });
+          if (idx == query.length - 1) {
+              $('#submit-btn').prop('disabled', false);
+          }
 
-        	$('#submit-btn').click(function() {
-        		alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
-        		// clear responses
-	        	responses = [];
-	          	$('.selected').each(function(){
-	          	  $img = $(this).find('img');
-	              responses.push($img.attr('src'))
-	            })
+          $('#submit-btn').click(function() {
+            alert('This is for demo purpose. No responses will be submitted. You can view the results in console.');
+          	// clear responses
+  	        responses[idx] = [];
+          	$('.selected').each(function(){
+          	  $img = $(this).find('img');
+              responses[idx].push($img.attr('src'))
+            })
 
-	            var output = {'target': query, 'responses': responses};
-	            console.log(output)
+            if (responses[idx].length < 1) {
+              alert('No image selected at this page. Correct before submitting.');
+              return false;
+            }
 
-	            if (output.responses.length < 1) {
-	              alert('No image selected. Correct before submitting.');
-	              return false;
-	            }
+            var output = query.map(function(q, i) {
+              return {'target': q, 'responses': responses[i]};
             });
+            console.log(output)
+          });
         }
         // Enable the UI.
         function enable_hit() {
           enabled = true;
 
           // Enable components
+          $('#next-btn').click(function() { set_idx(idx + 1) });
+          $('#prev-btn').click(function() { set_idx(idx - 1) });
           $('#submit-btn').prop('disabled', false);
+          if (idx == query.length - 1) {
+              $('#submit-btn').prop('disabled', false);
+          }
 
           // Set up submit handler.
           simpleamt.setupSubmit();
           $('#submit-btn').click(function() {
-          	responses = [];
-          	$('.selected').each(function(){
-          	  $img = $(this).find('img');
-              responses.push($img.attr('src'))
-	          })
+          	// clear responses
+            responses[idx] = [];
+            $('.selected').each(function(){
+              $img = $(this).find('img');
+              responses[idx].push($img.attr('src'))
+            })
 
-            var output = {'target': query, 'responses': responses};
-
-            if (output.responses.length < 1) {
-              alert('No image selected. Correct before submitting.');
+            if (responses[idx].length < 1) {
+              // Validate the output
+              alert('No image selected at this page. Correct before submitting.');
               return false;
+            } else {
+              // prepare output
+              var output = query.map(function(q, i) {
+                return {'target': q, 'responses': responses[i]};
+              });
+              simpleamt.setOutput(output);
             }
-
-            simpleamt.setOutput(output);
           });
         }
 
