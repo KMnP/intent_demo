@@ -274,18 +274,18 @@ What if I never post this kind of images before? You can use common sense to jud
         function render() {
           // scroll up to the top
           document.body.scrollTop = 0;
-		  document.documentElement.scrollTop = 0;
+		      document.documentElement.scrollTop = 0;
           console.log(idx)
           // Set up the image
           $('#query-container').empty();
           $('<img>').attr({'src': query[idx]}).appendTo($('#query-container'));
-          console.log('loaded proxy image from ' + query);
+          console.log('render: loaded proxy image from ' + query);
 
           // Set up the grid
           $('.image-container').each(function(index){
           	$(this).empty();
             $('<img>').attr({'src': input[idx][index]}).appendTo($(this));
-            console.log('loaded image from ' + input[idx][index]);
+            console.log('render: loaded image from ' + input[idx][index]);
           });
 
 
