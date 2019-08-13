@@ -265,7 +265,8 @@ What if I never post this kind of images before? You can use common sense to jud
               img.onload = function() {
                 // console.log('loaded image from ' + img_url); 
               };
-              img.src = img_url + "?t=" + new Date().getTime();
+              // img.src = img_url + "?t=" + new Date().getTime();
+              img.src = img_url;
             });
           });
 
@@ -286,7 +287,7 @@ What if I never post this kind of images before? You can use common sense to jud
           // Set up the grid
           $('.image-container').each(function(index){
             $(this).empty();
-            $('<img>').attr({'src': input[idx][index] + "?t=" + new Date().getTime()}).appendTo($(this));
+            $('<img>').attr({'src': input[idx][index]}).appendTo($(this));
             // console.log('render: loaded image from ' + input[idx][index]);
           });
 
