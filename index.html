@@ -259,9 +259,9 @@ What if I never post this kind of images before? You can use common sense to jud
 
           // Preload all images
           // var imgs = [];
-          $.each(query, function(query_idx){
+          $.each(query, function(query_idx, value){
             console.log(input[query_idx])
-            $.each(input[query_idx], function(img_url) {
+            $.each(input[query_idx], function(i, img_url) {
               var img = new Image();
               img.onload = function() { console.log('loaded image from ' + img_url); };
               img.src = img_url;
@@ -280,13 +280,13 @@ What if I never post this kind of images before? You can use common sense to jud
           // Set up the image
           $('#query-container').empty();
           $('<img>').attr({'src': query[idx]}).appendTo($('#query-container'));
-          console.log('render: loaded proxy image from ' + query);
+          // console.log('render: loaded proxy image from ' + query);
 
           // Set up the grid
           $('.image-container').each(function(index){
           	$(this).empty();
             $('<img>').attr({'src': input[idx][index]}).appendTo($(this));
-            console.log('render: loaded image from ' + input[idx][index]);
+            // console.log('render: loaded image from ' + input[idx][index]);
           });
 
 
