@@ -259,11 +259,13 @@ What if I never post this kind of images before? You can use common sense to jud
 
           // Preload all images
           // var imgs = [];
-          // $.each(query, function(img_url) {
-          //   var img = new Image();
-          //   img.onload = function() { console.log('loaded image from ' + img_url); };
-          //   img.src = img_url;
-          // });
+          $.each(query, function(query_idx){
+            $.each(input[query_idx], function(img_url) {
+              var img = new Image();
+              img.onload = function() { console.log('loaded image from ' + img_url); };
+              img.src = img_url;
+            });
+          });
 
           render();
         }
