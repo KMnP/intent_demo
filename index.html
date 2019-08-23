@@ -352,11 +352,11 @@
         function set_idx(new_idx) {
           if (new_idx < 0 || new_idx >= input.length) return;
 
+          // clear responses in case user deselect any
+          responses[idx] = [];
           $('.selected').each(function(){
             $img = $(this).find('img');
             // add to the responses if not in array
-            // clear responses in case user deselect any
-            responses[idx] = [];
             if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
               responses[idx].push($img.attr('src'))
             }
@@ -373,11 +373,11 @@
         function set_idx_back(new_idx) {
           if (new_idx < 0 || new_idx >= input.length) return;
 
+          // clear responses in case user deselect any
+          responses[idx] = [];
           $('.selected').each(function(){
             $img = $(this).find('img');
             // add to the responses if not in array
-            // clear responses in case user deselect any
-            responses[idx] = [];
             if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
               responses[idx].push($img.attr('src'))
             }
