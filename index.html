@@ -355,6 +355,8 @@
           $('.selected').each(function(){
             $img = $(this).find('img');
             // add to the responses if not in array
+            // clear responses in case user deselect any
+            responses[idx] = [];
             if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
               responses[idx].push($img.attr('src'))
             }
@@ -374,6 +376,8 @@
           $('.selected').each(function(){
             $img = $(this).find('img');
             // add to the responses if not in array
+            // clear responses in case user deselect any
+            responses[idx] = [];
             if(jQuery.inArray($img.attr('src'), responses[idx]) === -1) {
               responses[idx].push($img.attr('src'))
             }
