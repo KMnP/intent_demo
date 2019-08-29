@@ -335,10 +335,24 @@
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
           // console.log(idx)
-          // Set up the image
+          // Set up the probe image
           $('#query-container').empty();
           $('<img>').attr({'src': query[idx], 'id': "myProbe", 'alt': "These are the images you want to post. Click the upper right button to return"}).appendTo($('#query-container'));
           // console.log('render: loaded proxy image from ' + query);
+
+          // Set up click info
+          var modal = document.getElementById("myModal");
+
+          // Get the image and insert it inside the modal - use its "alt" text as a caption
+          var probeImg = document.getElementById("myProbe");
+          // var imgContainer = document.getElementById("query-container")
+          var modalImg = document.getElementById("enlargedImg");
+          var captionText = document.getElementById("probeCaption");
+          probeImg.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+          }
 
           // Set up the grid
           $('.image-container').each(function(index){
